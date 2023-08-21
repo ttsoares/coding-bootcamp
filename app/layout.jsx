@@ -17,20 +17,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="w-screen h-screen bg-slate-700">
+    <html lang="en" className="h-screen w-screen">
       <body className={`${inter.className} relative w-full h-full`}>
-        <div className="flex w-full h-full">
-          <div className="flex flex-col justify-between w-1/2 h-full border-2 border-green-500">
-            <div className="w-1/3 ml-96 mt-52">
-              <Image src={Quotes} alt="" width={150} height={150} />
+        <div className="flex flex-col md:flex-row w-full h-full">
+          <div className="flex flex-col justify-between  h-full w-full md:w-1/2  order-last md:order-first">
+            <div className="w-full flex justify-center md:justify-normal md:w-1/3 md:ml-[345px] md:mt-56 ">
+              <Image src={Quotes} alt="" width={115} height={115} />
             </div>
-            <div className="w-1/3">
-              <Image src={Curve} alt="" />
+            <div className=" md:w-[80%] h-28 md:h-56 relative items-end">
+              <Image src={Curve} fill alt="" />
             </div>
           </div>
 
-          <div className="w-1/2 h-full p-8 mt-20">
-            <Image src={PatternBg} alt="" />
+          <div className="w-full md:w-1/2 p-6 order-first md:order-none">
+            <Image src={PatternBg} alt="" className="md:mt-20" />
           </div>
         </div>
         {children}
