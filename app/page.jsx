@@ -4,10 +4,12 @@ import { useState } from "react";
 
 import Image from "next/image";
 
+import Controls from "@/components/Controls";
+
 import { data } from "./data";
 
 //----------------------------
-export default function Home() {
+const Page = () => {
   const [person, setPerson] = useState(0);
 
   function inc() {
@@ -23,58 +25,40 @@ export default function Home() {
   }
 
   return (
-    <main className="h-full w-full md:w-[90%] absolute top-0 left-0 md:top-20 md:left-28 border-yellow-500">
-      <div className="flex flex-col md:flex-row w-full h-full md:w-2/3 relative border-2 border-red-500">
-        <div className="order-last md:order-none border-2 border-green-600 w-full h-2/3">
-          {/* Texts */}
-          <div className="w-[90%] md:w-[50%]  md:absolute md:top-48 md:left-40 md:z-20">
-            <p className="">{data[person].text}</p>
-            <div className="flex mt-6">
+    <main className="h-full w-full absolute top-0 left-0  md:p-20">
+      <div className="flex flex-col md:flex-row w-full h-full relative ">
+        {/* left - text */}
+        <div className="z-10 order-last md:order-none w-full flex justify-center md:w-2/3 md:h-full ">
+          <div className="py-6 w-[94%] h-2/3 text-center  md:text-left md:mt-24 text-lg md:text-4xl md:py-16 md:pr-16 md:ml-6">
+            <p className=" w-[90%] md:w-full mx-auto md:mx-0 mt-9 md:mt-0">{`" ${data[person].text} "`}</p>
+            <div className="flex flex-col md:flex-row mt-6">
               <p className="font-bold text-lg mr-3">{data[person].name}</p>
               <p className="text-gray-400 text-lg">{data[person].focus}</p>
             </div>
           </div>
         </div>
+        {/* image */}
         <div
-          className="flex flex-col order-first mt-12 ml-10
-          md:ml-0 md:mt-0
-          md:absolute  top-32 -right-60 
-          border-2 border-blue-900
-          "
+          className=" order-first flex flex-col justify-center items-center md:items-start  
+          md:p-0 md:mt-0 md:order-none md:absolute md:top-0 md:right-0 md:w-[50%]"
         >
-          <div className="md:ml-20 drop-shadow-2xl w-[310px] h-[310px] md:w-[510px] md:h-[510px]">
+          <div
+            className=" w-[280px] h-[280px] drop-shadow-4xl
+          md:w-[540px] md:h-[540px] mt-8 md:mt-4 md:ml-6"
+          >
             <Image
               src={data[person].image}
-              width={510}
-              height={510}
+              width={550}
+              height={550}
               alt="photo person"
             />
           </div>
 
-          <div className="-mt-5 ml-36 z-10 flex w-24 h-12 rounded-full bg-white items-center justify-around drop-shadow-lg">
-            <div onClick={dec} className="ml-2 mt-1 hover:cursor-pointer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22">
-                <path
-                  fill="none"
-                  stroke="#8585AC"
-                  strokeWidth="3"
-                  d="M11 1L3 9l8 8"
-                />
-              </svg>
-            </div>
-            <div onClick={inc} className="hover:cursor-pointer mt-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22">
-                <path
-                  fill="none"
-                  stroke="#8585AC"
-                  strokeWidth="3"
-                  d="M2 1l8 8-8 8"
-                />
-              </svg>
-            </div>
-          </div>
+          <Controls inc={inc} dec={dec} />
         </div>
       </div>
     </main>
   );
-}
+};
+
+export default Page;
