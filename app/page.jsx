@@ -10,7 +10,7 @@ import { data } from "./data";
 
 //----------------------------
 const Page = () => {
-  const [person, setPerson] = useState(0);
+  const [person, setPerson] = useState(1);
 
   function inc() {
     const increment = person + 1;
@@ -29,11 +29,15 @@ const Page = () => {
       <div className="flex flex-col md:flex-row w-full h-full relative ">
         {/* left - text */}
         <div className="z-10 order-last md:order-none w-full flex justify-center md:w-2/3 md:h-full ">
-          <div className="py-6 w-[94%] h-2/3 text-center  md:text-left md:mt-24 text-lg md:text-4xl md:py-16 md:pr-16 md:ml-6">
-            <p className=" w-[90%] md:w-full mx-auto md:mx-0 mt-9 md:mt-0">{`" ${data[person].text} "`}</p>
+          <div className="py-6 w-[77%] h-2/3 text-center  md:text-left md:mt-24 text-lg md:text-3xl md:py-16 md:pr-16 md:ml-14">
+            <p className=" w-[90%] md:w-full mx-auto md:mx-0 mt-9 md:mt-0 text-dark_blue font-light ">{`" ${data[person].text} "`}</p>
             <div className="flex flex-col md:flex-row mt-6">
-              <p className="font-bold text-lg mr-3">{data[person].name}</p>
-              <p className="text-gray-400 text-lg">{data[person].focus}</p>
+              <p className="font-bold text-lg mr-3 text-dark_blue">
+                {data[person].name}
+              </p>
+              <p className="text-grayish_blue text-lg font-medium">
+                {data[person].focus}
+              </p>
             </div>
           </div>
         </div>
@@ -44,7 +48,7 @@ const Page = () => {
         >
           <div
             className=" w-[280px] h-[280px] drop-shadow-4xl
-          md:w-[540px] md:h-[540px] mt-8 md:mt-4 md:ml-6"
+          md:w-[530px] md:h-[530px] mt-8 md:mt-4 md:ml-6"
           >
             <Image
               src={data[person].image}
